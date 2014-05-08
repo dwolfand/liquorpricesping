@@ -15,13 +15,13 @@ pingURL = function(requestURL, callback){
 };
 
 wakeUpServer = function(callback){
-	pingURL('http://localhost:5000/', function(response){
+	pingURL('http://liquorprices.herokuapp.com/', function(response){
 		callback(response);
 	});
 };
 
 triggerDBLoad = function(callback){
-	pingURL('http://localhost:5000/loaddb?num=10', function(response){
+	pingURL('http://liquorprices.herokuapp.com/loaddb?num=0', function(response){
 		callback(response);
 	});
 };
@@ -37,7 +37,7 @@ runProgram = function(){
 				//once the db load goes through, call the same method to run in the next day
 				setTimeout(function(){
 					runProgram();
-				}, 20000);
+				}, 21600000); //6 hours
 			});
 		}, 2000);
 	});

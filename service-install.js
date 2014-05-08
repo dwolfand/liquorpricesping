@@ -4,7 +4,7 @@ var Service = require('node-windows').Service;
 var svc = new Service({
   name:'LiquorPricesDBLoadPing',
   description: 'This will ping the liquor prices server on a regular interval to sync the database',
-  script: 'C:\\penfed-src\\liquor-prices-service\\PingLiquorPrices.js'
+  script: 'C:\\src\\liquorpricesping\\PingLiquorPrices.js'
 });
 
 // Listen for the "install" event, which indicates the
