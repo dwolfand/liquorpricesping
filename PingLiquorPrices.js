@@ -27,6 +27,8 @@ triggerDBLoad = function(callback){
 };
 
 runProgram = function(){
+	//once the db load goes through, call the same method to run in the next day
+	setTimeout(function(){runProgram();}, 21600000); //6 hours
 	//ping the server home page to make sure heroku is awake
 	wakeUpServer(function(response){
 		console.log(response);
@@ -34,10 +36,6 @@ runProgram = function(){
 		setTimeout(function(){
 			triggerDBLoad(function(response){
 				console.log(response);
-				//once the db load goes through, call the same method to run in the next day
-				setTimeout(function(){
-					runProgram();
-				}, 21600000); //6 hours
 			});
 		}, 2000);
 	});
